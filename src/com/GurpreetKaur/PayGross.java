@@ -27,7 +27,14 @@ public class PayGross extends SalesCommission implements IDisplay{
 
     @Override
     public void display() {
-        JOptionPane.showMessageDialog(null, "Commission rate is " +
-                percent.format(rate) +"($"+dollar.format(commission)+")"+ ". The amount of pay is $" + dollar.format(getPay()));
+        double payTemp=getPay();
+        if(payTemp>0) {
+            JOptionPane.showMessageDialog(null, "Commission rate is " +
+                    percent.format(rate) + "($" + dollar.format(commission) + ")" + ". The amount of pay is $" + dollar.format(getPay()));
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "The salesperson must reimburse the amount $"+dollar.format(Math.abs(pay))+" to company ");
+        }
     }
 }
